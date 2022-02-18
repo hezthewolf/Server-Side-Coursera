@@ -1,7 +1,4 @@
-const rect = {
-  perimeter: (x, y) => 2 * (x + y),
-  area: (x, y) => x * y,
-};
+const rect = require('./rectangle')
 
 const solveRect = (a, b) => {
   console.log(`Perform arithmetic operations on: ${a} and ${b}`);
