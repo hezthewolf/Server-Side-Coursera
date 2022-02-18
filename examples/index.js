@@ -1,16 +1,19 @@
 const rect = require('./rectangle')
 
 const solveRect = (a, b) => {
-  console.log(`Perform arithmetic operations on: ${a} and ${b}`);
+//   console.log(`Perform arithmetic operations on: ${a} and ${b}`);
 
-  if (a <= 0 || b <= 0) {
-    console.log("Value cannot be less than or equal to zero");
-  } else {
-    console.log(`The perimeter of the rectangle is: ${rect.perimeter(a, b)}`);
-    console.log(`The area of the rectangle is: ${rect.area(a, b)}`);
-  }
+    rect(a, b, (err, rectangle) => {
+        if (err) {
+            console.log(`ERROR: ${err.message}`);
+        }
+        else {
+            console.log(`The Area is: ${rectangle.area()}`);
+            console.log(`The Perimeter is: ${rectangle.perimeter()}`);
+        }
+    })
 
-  console.log("---------------------------------------");
+    console.log("--------------------------------------");
 };
 
 solveRect(3, 5);
