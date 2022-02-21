@@ -3,8 +3,11 @@ const http = require('http')
 const morgan = require('morgan')
 const bodyParser = require('body-parser')
 
-
+//                 ROUTES
 const dishRouter = require('./routes/dishRouter')
+const promoRouter = require('./routes/promoRouter')
+const leaderRouter = require('./routes/leaderRouter')
+
 const hostname = 'localhost'
 const port = 3000
 
@@ -15,28 +18,12 @@ app.use(bodyParser.json());
 
 
 app.use('/dishes', dishRouter)
+app.use('/promotions', promoRouter)
+app.use('/leaders', leaderRouter)
 app.use(express.static(__dirname+'/public'))
 
 
 
-
-app.get('/dishes/:dishId', (req, res, next) => {
-    res.end(`Send details of dish ${req.params.dishId}`)
-})
-
-app.post('/dishes/:dishId', (req, res, next) => {
-    res.statusCode = 403
-    res.end(`POST not supported`)
-})
-
-app.put('/dishes/:dishId', (req, res, next) => {
-    res.write(`Will update ${req.params.dishId} \n`)
-    res.end(`Will update the dish ${req.body.name} with details: ${req.body.description}`)
-})
-
-app.delete('/dishes/:dishId', (req, res, next) => {
-    res.end(`Deleting dish ${req.params.dishId}`)
-})
 
 
 app.use((req, res, next) => {
